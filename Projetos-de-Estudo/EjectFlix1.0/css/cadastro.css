@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html{
+    height: 100%;
+}
+
+body{
+
+    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('..//img/imagem-fundo.svg');
+    background-size: cover;
+    background-position: center;
+    font-family: "Hammersmith One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+} 
+
+header{
+    display: flex;
+    align-items: center;
+}
+
+header span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    padding-left: 10%;
+}
+
+
+main {
+    position: relative;
+    width: 100%; 
+    height: 100vh; 
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+.conteiner-forms {
+    position: absolute;
+    width: 414px;
+    height: 517px;
+    background-color: #585858BF;
+    border-radius: 10px;
+    opacity: 1; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    justify-content: center;
+    padding-top: 60px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.bemvindo{
+    position: relative;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.area-email{
+    width: 354px;
+    height: 71px;
+}
+
+.cadastre-se{
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17.5px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    gap: 4px;
+}
+
+.email-or-phone{
+    width: 354px;
+    height: 49px;
+    border-radius: 5px;
+    border: 1px;
+    opacity: 0px;
+    background-color: #BAB7B7;
+    color:  #000000c6;
+    padding-left: 19px;
+}
+
+.email-or-phone::placeholder{
+    color: #DBDBDB;
+    font-weight: 400px;
+    font-weight: bold;
+}
+
+.passworld{
+    width: 354px;
+    height: 49px;
+    border-radius: 5px;
+    border: 1px;
+    opacity: 0px;
+    background-color: #BAB7B7;
+    color: #000000c6;;
+    padding-left: 19px;
+}
+
+.passworld::placeholder{
+    color: #DBDBDB;
+    font-weight: 400;
+    font-weight: bold;
+}
+
+.button-cadastro{
+    width: 354px;
+    height: 49px;
+    border-radius: 5px;
+    font-weight: bold;
+    border: 1px;
+    opacity: 0px;
+    background-color: #E3C72DCC;
+    color: #000000;
+    cursor: pointer;
+}
+
+.link-cadastro{
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15.83px;
+    text-decoration: none;
+    text-decoration-skip-ink: none; 
+    color: #FFFFFF;
+    text-align: center;
+}
+    
+.custom-link:hover {
+    opacity: 1; 
+}
+
+footer{
+    background-color: #000000;
+    width: 100%;
+    height: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 30px;
+}
+
+.footer-section{
+    display: flex;
+    color: #FFFFFF;
+    font-family: Roboto Mono;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15.83px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    gap: 3px;
+}
+
+.footer-section img{
+    width: 18px;
+    height: 18px;
+}
+

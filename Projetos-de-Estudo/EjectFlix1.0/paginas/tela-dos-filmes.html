@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/tela-dos-filmes.css">
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2.3.0/dist/flickity.css">
+    <link rel="stylesheet" href="/css/carrossel-tela-filmes.css">
+    <link rel="stylesheet" href="/css/teste-modal.css">
+    <title>Tela de filmes</title>
+</head>
+<body>
+    
+    
+    <header class="navbar">
+        <div class="logo">
+            <img src="/img/logo.svg" alt="logo imagem">
+        </div>
+        <div class="nav-parent">
+            <div class="box">
+                <ul class="nav-links">
+                    <a href="tela-dos-filmes.html">Início</a>
+                    <button id="btn-categories" class="btn-categories">Categorias</button>
+                    <button id="btn-modal" class="btn-add">Adicionar Filmes</button>
+                </ul>
+            </div>
+        </div>
+        <div class="logoeject">
+            <img src="/img/logoeject.svg" alt="logo eject">
+        </div>
+    </header>
+    
+    <div id="categories-dropdown" class="nav-categories">
+        <div class="nav-pai">
+            <div class="box">
+                <ul class="nav-links">
+                    <a href="">Ação</a>
+                    <a href="">Aventura</a>
+                    <a href="">Comédia</a>
+                    <a href="">Drama</a>
+                    <a href="">Suspense</a>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div id="modal" class="modal">
+        <form class="modal-content">
+            <div class="close-content">
+                <span id="close" class="close">&times;</span>
+            </div>
+            <p class="adicionar-filme">Adicionar Filme à lista:</p>
+
+            <div class="endereco-nome">
+                <div class="div-retangulo">
+                    <p class="p-modal">Endereço da imagem</p>
+                    <input class="inserir" type="text" placeholder="Inserir...">
+                </div>
+                <div class="div-retangulo">
+                    <p class="p-modal">Nome do filme</p>
+                    <input class="inserir" type="text" placeholder="Inserir...">
+                </div>
+            </div>
+
+            <div class="categoria-ano">
+                <div class="div-retangulo">
+                    <p class="p-modal">Categoria</p>
+                    <input class="inserir" type="text" placeholder="Inserir...">
+                </div>
+                <div class="div-retangulo">
+                    <p class="p-modal">Ano de lançamento</p>
+                    <input class="inserir" type="text" placeholder="XX/XX/XXXX">
+                </div>
+            </div>
+            <button id="btnmodal" class="button-adicionar">Adicionar</button>
+        </form>
+    </div>
+
+    <main>
+        <div id="carrossel-filmes-1" class="carousel" data-flickity='{ "groupCells": true }'></div>
+        <div id="carrossel-filmes-2" class="carousel" data-flickity='{ "groupCells": true }'></div>
+    </main>
+
+
+    <footer>
+        <div class="footer-section">
+            <p>Made by Samuel silva</p>
+            <img src="/img/linkedin.svg" alt="icon linkedin">
+            <img src="/img/insta.svg" alt="icon instagram">
+            <img src="/img/github.svg" alt="icon github">
+        </div>
+    </footer>
+
+    <script src="/js/pages/tela-dos-filmes.js"></script>
+
+    <script src="https://unpkg.com/flickity@2.3.0/dist/flickity.pkgd.min.js"></script>
+    
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
+</html>

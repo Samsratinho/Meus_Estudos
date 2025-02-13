@@ -1,0 +1,111 @@
+* { 
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body { font-family: sans-serif; }
+
+.carousel {
+  height: 280px;
+  margin-bottom: 50px;
+}
+
+.carousel-cell {
+  width: 240px;
+  height: 100%;
+  margin-right: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.container-item-img{
+  width: 90%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0);
+  border-radius: 5px;
+
+  position: relative;
+}
+
+.container-item-img:hover{
+  border: 1px solid white;
+}
+
+.item-img{
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+
+}
+
+.flickity-button {
+  display: none !important;
+} 
+
+.capa{
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 35%;
+  position: absolute;
+  bottom: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  font-family: "Hammersmith One", sans-serif;
+
+}
+
+.titulo{
+  font-size: 16px;
+}
+
+.generos{
+  font-size: 10px;
+}
+
+.ano-lancamento{
+  font-size: 8px;
+
+}
+
+/* 
+
+* { box-sizing: border-box; }
+
+body { font-family: sans-serif; }
+
+.carousel {
+  background: #1B1B1B;
+  height: 250px;
+}
+
+.main{
+    width: 100%;
+}
+
+.carousel-cell {
+  
+  width: 200px;
+  height: 250px;
+  margin-right: 10px;
+  background: rgb(145, 255, 176);
+  border-radius: 5px;
+  border: 1.5px;
+}
+
+ */
