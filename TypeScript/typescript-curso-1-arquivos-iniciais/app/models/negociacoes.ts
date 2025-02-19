@@ -1,17 +1,23 @@
 import { Negociacao } from './negociacao.js'
 
+/* Array<Negociacao> == Negociacao[] */
+
 export class Negociacoes{
-    private negociacoes: Array<Negociacao> = [];
+    private negociacoes: Negociacao[] = [];
 
     adiciona(negociacao: Negociacao){
         this.negociacoes.push(negociacao);
     }
-    lista(): ReadonlyArray<Negociacao>{
+
+    /* ReadonlyArray<Negociacao> == readonly Negociacao[] */
+
+    lista(): readonly Negociacao[] {
         return this.negociacoes
     }
 }
 
-/* const list: Array<string/number> = [];
+/* TIPO DE ARRAY QUE PODE USAR STRIG OU NUMBER:::::
+ const list: Array<string/number> = [];
 list.push('Samuel');
 list.push('Silva');
 
