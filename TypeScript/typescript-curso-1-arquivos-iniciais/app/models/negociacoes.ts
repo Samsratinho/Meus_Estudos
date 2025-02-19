@@ -1,10 +1,10 @@
 import { Negociacao } from './negociacao.js'
 
-/* Array<Negociacao> == Negociacao[] */
+/* se não me engano para o array não ser mechido */
 
+/* Array<Negociacao> == Negociacao[] */
 export class Negociacoes{
     private negociacoes: Negociacao[] = [];
-
     adiciona(negociacao: Negociacao){
         this.negociacoes.push(negociacao);
     }

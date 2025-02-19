@@ -1,18 +1,20 @@
+/* construtor para o const dos valores tipados */
+
 /* forma nova muito mais simples */
 export class Negociacao{
 
     constructor(
-        private _data: Date,
-        public readonly quantidade: number, /* coisa nova do TypeScript */
-        public readonly valor: number
+        private _data: Date, /* adicona uma data que ninguem pode mexer */
+        public readonly quantidade: number, /* adiciona uma quantidade publica que só podemos ler*/
+        public readonly valor: number /* mesmo aqui */
     ){}
 
     get volume(): number {
-        return this.quantidade * this.valor
+        return this.quantidade * this.valor /* volume que é a multiplicação de quantidade e valor */
     }
 
     get data(): Date {
-        const data = new Date(this._data.getTime())
+        const data = new Date(this._data.getTime()) /* função para não mudar os dados da data com as propriedades */
         return data;
     }
 }

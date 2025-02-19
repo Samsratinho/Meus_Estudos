@@ -1,19 +1,45 @@
+/* construtor para o const dos valores tipados */
+/* forma nova muito mais simples */
 export class Negociacao {
-    constructor(data, quantidade, valor) {
+    constructor(_data, /* adicona uma data que ninguem pode mexer */ quantidade, /* adiciona uma quantidade publica que só podemos ler*/ valor /* mesmo aqui */) {
+        this._data = _data;
+        this.quantidade = quantidade;
+        this.valor = valor;
+    }
+    get volume() {
+        return this.quantidade * this.valor; /* volume que é a multiplicação de quantidade e valor */
+    }
+    get data() {
+        const data = new Date(this._data.getTime()); /* função para não mudar os dados da data com as propriedades */
+        return data;
+    }
+}
+/* forma antiga
+
+export class Negociacao{
+
+    private _data: Date;
+    private _quantidade: number;
+    private _valor: number;
+
+    constructor(data: Date, quantidade: number, valor: number){    /COISA VELHA DO TYPESCRIPT/
         this._data = data;
         this._quantidade = quantidade;
         this._valor = valor;
-    }
-    get data() {
+
+    get data(): Date {
         return this._data;
     }
-    get quantidade() {
+
+    get quantidade(): number {
         return this._quantidade;
     }
-    get valor() {
-        return this._valor;
+
+    get valor(): number {
+        return this._valor
     }
-    get volume() {
-        return this._quantidade * this._valor;
+
+    get volume(): number {
+        return this._quantidade * this._valor
     }
-}
+} */ 

@@ -1,3 +1,4 @@
+/* função que faz o botão incluir adicionar as informações */
 import { NegociacaoController } from "./controllers/negociacao-controller.js";
 const controller = new NegociacaoController();
 const form = document.querySelector('.form');

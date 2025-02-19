@@ -1,3 +1,5 @@
+/* se não me engano para o array não ser mechido */
+/* Array<Negociacao> == Negociacao[] */
 export class Negociacoes {
     constructor() {
         this.negociacoes = [];
@@ -5,11 +7,13 @@ export class Negociacoes {
     adiciona(negociacao) {
         this.negociacoes.push(negociacao);
     }
+    /* ReadonlyArray<Negociacao> == readonly Negociacao[] */
     lista() {
         return this.negociacoes;
     }
 }
-/* const list: Array<string/number> = [];
+/* TIPO DE ARRAY QUE PODE USAR STRIG OU NUMBER:::::
+ const list: Array<string/number> = [];
 list.push('Samuel');
 list.push('Silva');
 

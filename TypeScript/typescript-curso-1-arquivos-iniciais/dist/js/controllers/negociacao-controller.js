@@ -15,9 +15,9 @@ export class NegociacaoController {
     }
     criaNegociacao() {
         const exp = /-/g;
-        const date = new Date(this.inputData.value.replace(exp, ','));
-        const quantidade = parseInt(this.inputQuantidade.value);
-        const valor = parseFloat(this.inputValor.value);
+        const date = new Date(this.inputData.value.replace(exp, ',')); /* para em vez de a data funcionar assim: 1111-11-11, ela fica escrita assim: 1111,11,11*/
+        const quantidade = parseInt(this.inputQuantidade.value); /* valor de inteiros */
+        const valor = parseFloat(this.inputValor.value); /* valor racional */
         return new Negociacao(date, quantidade, valor);
     }
     limparFormulario() {
