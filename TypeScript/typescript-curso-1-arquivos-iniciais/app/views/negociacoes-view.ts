@@ -1,12 +1,7 @@
 import { Negociacoes } from "../models/negociacoes.js"; /* importação do negociacoes onde temos nossas variaveis */
+import { View } from "./view.js";
 
-export class NegociacaoView{ /* nossa função para printar na tela o HTML das variaveis */
-
-    private elemento: HTMLElement; /* criação do elemento que vai ser jogado no hmtl */
-
-    constructor(seletor: string){
-        this.elemento = document.querySelector(seletor) /* caminho do dom criado */
-    }
+export class NegociacaoView extends View <Negociacoes>{ /* nossa função para printar na tela o HTML das variaveis */
 
     template(model: Negociacoes): string{ /* template do HTML que vai ser printado na tela (é uma tabela) */
         return `
@@ -31,11 +26,5 @@ export class NegociacaoView{ /* nossa função para printar na tela o HTML das v
                 }).join('')}
             </tbody>
         `; /* .join é algo que tem q ter, PERGUNTAR SOBRE */
-    }
-
-    update(model: Negociacoes): void{ /* a função mesmo que upa para a tela o template */
-        const template = this.template(model);
-        console.log(template);
-        this.elemento.innerHTML = this.template(model);
     }
 }
