@@ -17,7 +17,7 @@ export class NegociacaoView extends View <Negociacoes>{ /* nossa função para p
                 ${model.lista().map(negociacao => { /* função que adiciona as variaveis na tabela (data, quantidade, valor) */
                     return`
                     <tr>
-                        <td>${new Intl.DateTimeFormat().format(negociacao.data)}</td> 
+                        <td>${this.formatar(negociacao.data)}</td> 
                         <td>${negociacao.quantidade}</td>
                         <td>${negociacao.valor}</td>
                     </tr>
@@ -26,5 +26,11 @@ export class NegociacaoView extends View <Negociacoes>{ /* nossa função para p
                 }).join('')}
             </tbody>
         `; /* .join é algo que tem q ter, PERGUNTAR SOBRE */
+    }
+
+
+    private formatar(data: Date): string{
+        return new Intl.DateTimeFormat().
+        format(data)
     }
 }
