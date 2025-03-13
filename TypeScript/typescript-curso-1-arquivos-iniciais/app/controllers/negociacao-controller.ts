@@ -13,7 +13,6 @@ export class NegociacaoController { /* declaração de propriedades privadas */
     private mensagemView = new MensagemView('#mensagemView');
     private readonly SABADO = 6;
     private readonly DOMINGO = 0;
-
     constructor() { /* puxando do html, buscando elemntos do dom */
         this.inputData = document.querySelector('#data');
         this.inputQuantidade = document.querySelector('#quantidade');

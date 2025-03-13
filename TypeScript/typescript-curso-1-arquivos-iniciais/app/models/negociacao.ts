@@ -18,7 +18,7 @@ export class Negociacao{
         return data;
     }
 
-    public static criaDe(dataString: string, quantidadeString: string, valorString: string): Negociacao{
+    public static criaDe(dataString: string, quantidadeString: string, valorString: string): Negociacao{ /* virou um metodo e estatico */
         const exp = /-/g;
         const date = new Date(dataString.replace(exp, ',')); /* para em vez de a data funcionar assim: 1111-11-11, ela fica escrita assim: 1111,11,11*/
         const quantidade = parseInt(quantidadeString); /* valor de inteiros */
