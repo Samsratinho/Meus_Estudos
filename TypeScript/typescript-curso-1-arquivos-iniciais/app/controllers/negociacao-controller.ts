@@ -5,7 +5,7 @@ import { MensagemView } from '../views/mensagem-view.js';
 import { NegociacaoView } from '../views/negociacoes-view.js';
 
 export class NegociacaoController { /* declaração de propriedades privadas */
-    private inputData: HTMLInputElement;
+    private inputData: HTMLInputElement; /* no ts, qualquer elemento pode ser null, ent pode isso colocamos strictnullchecks e colocamos ele realmente como htmlinputelement */
     private inputQuantidade: HTMLInputElement;
     private inputValor: HTMLInputElement;
     private negociacoes = new Negociacoes();
@@ -13,10 +13,11 @@ export class NegociacaoController { /* declaração de propriedades privadas */
     private mensagemView = new MensagemView('#mensagemView');
     private readonly SABADO = 6;
     private readonly DOMINGO = 0;
+
     constructor() { /* puxando do html, buscando elemntos do dom */
-        this.inputData = document.querySelector('#data');
-        this.inputQuantidade = document.querySelector('#quantidade');
-        this.inputValor = document.querySelector('#valor');
+        this.inputData = document.querySelector('#data') as HTMLInputElement;/* a variavel pode ser htmlinputelement ou null, então explicitamos que ela é htmlinputelement */
+        this.inputQuantidade = document.querySelector('#quantidade')as HTMLInputElement;
+        this.inputValor = document.querySelector('#valor')as HTMLInputElement;
         this.negociacoesView.update(this.negociacoes); /* Atualiza a view com as negociações (inicialmente vazia) */
     }
 

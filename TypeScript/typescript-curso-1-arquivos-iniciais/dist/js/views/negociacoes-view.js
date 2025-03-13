@@ -19,10 +19,9 @@ export class NegociacaoView extends View {
                         <td>${negociacao.valor}</td>
                     </tr>
                     `;
-            /* Intl.DateTimeFormat().format(negociacao.data) é para vir o padrao de data do seu codigo */
         }).join('')}
             </tbody>
-        `; /* .join é algo que tem q ter, PERGUNTAR SOBRE */
+        `;
     }
     formatar(data) {
         return new Intl.DateTimeFormat().

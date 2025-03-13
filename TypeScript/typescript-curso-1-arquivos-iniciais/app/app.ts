@@ -5,7 +5,13 @@ import { NegociacaoView } from "./views/negociacoes-view.js";
 
 const controller = new NegociacaoController();
 const form = document.querySelector('.form');
-form.addEventListener('submit', event => {
+if(form){
+    form.addEventListener('submit', event => {
     event.preventDefault();
     controller.adiciona();
-});
+    });
+} else {
+    throw Error('Não foi possível inicializar a aplicação. veirifique se o form existe.')
+}
+
+/* const x: string | number | boolean = algo */
