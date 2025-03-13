@@ -17,6 +17,14 @@ export class Negociacao{
         const data = new Date(this._data.getTime()) /* função para não mudar os dados da data com as propriedades */
         return data;
     }
+
+    public static criaDe(dataString: string, quantidadeString: string, valorString: string): Negociacao{
+        const exp = /-/g;
+        const date = new Date(dataString.replace(exp, ',')); /* para em vez de a data funcionar assim: 1111-11-11, ela fica escrita assim: 1111,11,11*/
+        const quantidade = parseInt(quantidadeString); /* valor de inteiros */
+        const valor = parseFloat(valorString); /* valor racional */
+        return new Negociacao(date, quantidade, valor);
+    }
 }
 
 /* forma antiga

@@ -22,8 +22,12 @@ export class NegociacaoController { /* declaração de propriedades privadas */
     }
 
     public adiciona(): void { /* função para adicionar valores */
-        const negociacao = this.criaNegociacao();
-        if (!this.ehDiaUltil(negociacao.data)){
+        const negociacao = Negociacao.criaDe(
+            this.inputData.value,
+            this.inputQuantidade.value,
+            this.inputValor.value
+        );
+        if (!this.ehDiaUltil(negociacao.data)){ /* if para funcionar em apenas dias uteis */
             this.mensagemView.update('Apenas negociações em dias úteis são aceitas');
             return;
         }
@@ -33,17 +37,11 @@ export class NegociacaoController { /* declaração de propriedades privadas */
     }
     
 
-    private ehDiaUltil(data: Date) {
+    private ehDiaUltil(data: Date) { /* função para dias uteis */
         return data.getDay() > DiaDaSemana.DOMINGO && data.getDay() < DiaDaSemana.SABADO;
     }    
 
-    private criaNegociacao(): Negociacao {
-        const exp = /-/g;
-        const date = new Date(this.inputData.value.replace(exp, ',')); /* para em vez de a data funcionar assim: 1111-11-11, ela fica escrita assim: 1111,11,11*/
-        const quantidade = parseInt(this.inputQuantidade.value); /* valor de inteiros */
-        const valor = parseFloat(this.inputValor.value); /* valor racional */
-        return new Negociacao(date, quantidade, valor);
-    }
+
 
     private limparFormulario(): void { /* retirar os valores da tela */
         this.inputData.value = '';
