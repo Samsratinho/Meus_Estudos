@@ -1,3 +1,4 @@
+import { logarTempoDeExecucao } from '../decorators/logar-tempo-de-execucao.js';
 import { DiaDaSemana } from '../enums/dia-da-semana.js';
 import { Negociacao } from '../models/negociacao.js';
 import { Negociacoes } from '../models/negociacoes.js';
@@ -21,6 +22,7 @@ export class NegociacaoController { /* declaração de propriedades privadas */
         this.negociacoesView.update(this.negociacoes); /* Atualiza a view com as negociações (inicialmente vazia) */
     }
 
+    @logarTempoDeExecucao()
     public adiciona(): void { /* função para adicionar valores */
         const negociacao = Negociacao.criaDe(
             this.inputData.value,
@@ -34,6 +36,7 @@ export class NegociacaoController { /* declaração de propriedades privadas */
         this.negociacoes.adiciona(negociacao); /* Adiciona a nova negociação à lista de negociações */
         this.limparFormulario();
         this.atualizaView();
+
     }
     
 
