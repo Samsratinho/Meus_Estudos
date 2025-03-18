@@ -1,9 +1,10 @@
+import { escapar } from "../decorators/escapar.js";
 import { Negociacoes } from "../models/negociacoes.js"; /* importação do negociacoes onde temos nossas variaveis */
 import { View } from "./view.js";
 
 export class NegociacaoView extends View <Negociacoes>{ /* nossa função para printar na tela o HTML das variaveis */
-
-    template(model: Negociacoes): string{ /* template do HTML que vai ser printado na tela (é uma tabela) */
+    @escapar
+    protected template(model: Negociacoes): string{ /* template do HTML que vai ser printado na tela (é uma tabela) */
         return `
         <table class="table table-houver table-bordered">
             <therad>
