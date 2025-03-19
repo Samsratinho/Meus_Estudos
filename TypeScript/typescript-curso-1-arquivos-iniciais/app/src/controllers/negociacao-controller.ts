@@ -4,6 +4,7 @@ import { logarTempoDeExecucao } from '../decorators/logar-tempo-de-execucao.js';
 import { DiaDaSemana } from '../enums/dia-da-semana.js';
 import { Negociacao } from '../models/negociacao.js';
 import { Negociacoes } from '../models/negociacoes.js';
+import { NegociacoesService } from '../services/negociacoes-service.js';
 import { MensagemView } from '../views/mensagem-view.js';
 import { NegociacaoView } from '../views/negociacoes-view.js';
 
@@ -17,8 +18,7 @@ export class NegociacaoController { /* declaração de propriedades privadas */
     private negociacoes = new Negociacoes();
     private negociacoesView = new NegociacaoView('#negociacoesView');  /* Instância da classe NegociacaoView para renderizar a view */
     private mensagemView = new MensagemView('#mensagemView');
-    private readonly SABADO = 6;
-    private readonly DOMINGO = 0;
+    private negociacoesService = new NegociacoesService
 
     constructor() { /* puxando do html, buscando elemntos do dom */
         this.negociacoesView.update(this.negociacoes); /* Atualiza a view com as negociações (inicialmente vazia) */
@@ -39,15 +39,22 @@ export class NegociacaoController { /* declaração de propriedades privadas */
         this.negociacoes.adiciona(negociacao); /* Adiciona a nova negociação à lista de negociações */
         this.limparFormulario();
         this.atualizaView();
-
     }
     
+    public importarDados(): void { /* função para importar dados */
+        this.negociacoesService
+        .obterNegociacoesDoDia()
+              .then((negociacoesDeHoje: any) => {
+                for(let negociacao of negociacoesDeHoje){
+                    this.negociacoes.adiciona(negociacao);
+                }
+                this.negociacoesView.update(this.negociacoes);
+            }); 
+    }
 
     private ehDiaUltil(data: Date) { /* função para dias uteis */
         return data.getDay() > DiaDaSemana.DOMINGO && data.getDay() < DiaDaSemana.SABADO;
     }    
-
-
 
     private limparFormulario(): void { /* retirar os valores da tela */
         this.inputData.value = '';
@@ -61,3 +68,7 @@ export class NegociacaoController { /* declaração de propriedades privadas */
         this.mensagemView.update('Negociação adicionada com sucesso');
     }
 }
+function then(arg0: (dados: any[]) => Negociacao[]) {
+    throw new Error('Function not implemented.');
+}
+
