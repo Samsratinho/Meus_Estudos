@@ -1,6 +1,3 @@
-import { inspect } from "../decorators/inspect.js";
-import { logarTempoDeExecucao } from "../decorators/logar-tempo-de-execucao.js";
-
 export abstract class View<T>{
     /* só o pai tem acesso a esse elemento, mas as filhas podem tocar */
     protected elemento: HTMLElement; /* criação do elemento que vai ser jogado no hmtl */

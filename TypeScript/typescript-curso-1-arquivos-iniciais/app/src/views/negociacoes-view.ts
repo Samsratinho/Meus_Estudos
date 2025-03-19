@@ -34,4 +34,5 @@ export class NegociacaoView extends View <Negociacoes>{ /* nossa função para p
         return new Intl.DateTimeFormat().
         format(data)
     }
+    
 }
