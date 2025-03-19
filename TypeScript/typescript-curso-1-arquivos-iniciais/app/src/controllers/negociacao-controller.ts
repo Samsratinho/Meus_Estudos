@@ -1,3 +1,5 @@
+import { domInjector } from '../decorators/dom-injector.js';
+import { inspect } from '../decorators/inspect.js';
 import { logarTempoDeExecucao } from '../decorators/logar-tempo-de-execucao.js';
 import { DiaDaSemana } from '../enums/dia-da-semana.js';
 import { Negociacao } from '../models/negociacao.js';
@@ -6,8 +8,11 @@ import { MensagemView } from '../views/mensagem-view.js';
 import { NegociacaoView } from '../views/negociacoes-view.js';
 
 export class NegociacaoController { /* declaração de propriedades privadas */
+    @domInjector('#data') /* decorator para injetar o elemento do dom */
     private inputData: HTMLInputElement; /* no ts, qualquer elemento pode ser null, ent pode isso colocamos strictnullchecks e colocamos ele realmente como htmlinputelement */
+    @domInjector('#quantidade') /* a variavel pode ser htmlinputelement ou null, então explicitamos que ela é htmlinputelement */
     private inputQuantidade: HTMLInputElement;
+    @domInjector('#valor')
     private inputValor: HTMLInputElement;
     private negociacoes = new Negociacoes();
     private negociacoesView = new NegociacaoView('#negociacoesView');  /* Instância da classe NegociacaoView para renderizar a view */
@@ -16,12 +21,10 @@ export class NegociacaoController { /* declaração de propriedades privadas */
     private readonly DOMINGO = 0;
 
     constructor() { /* puxando do html, buscando elemntos do dom */
-        this.inputData = document.querySelector('#data') as HTMLInputElement;/* a variavel pode ser htmlinputelement ou null, então explicitamos que ela é htmlinputelement */
-        this.inputQuantidade = document.querySelector('#quantidade')as HTMLInputElement;
-        this.inputValor = document.querySelector('#valor')as HTMLInputElement;
         this.negociacoesView.update(this.negociacoes); /* Atualiza a view com as negociações (inicialmente vazia) */
     }
 
+    @inspect
     @logarTempoDeExecucao()
     public adiciona(): void { /* função para adicionar valores */
         const negociacao = Negociacao.criaDe(
