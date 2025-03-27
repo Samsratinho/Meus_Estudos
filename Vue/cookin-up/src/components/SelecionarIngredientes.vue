@@ -3,6 +3,7 @@
 /* import de requisições http */
 import { obterCategorias } from '@/http/index';
 import type ICategoria from '@/insterfaces/ICategoria';
+import CardCategoria from './CardCategoria.vue';
 
     export default {
         data(){
@@ -16,6 +17,7 @@ carrega o "caregorias:[]" depois o "created()" */
         async created() {
             this.categorias = await obterCategorias();
         },
+        components: { CardCategoria }
     }
 </script>
 
@@ -30,8 +32,8 @@ carrega o "caregorias:[]" depois o "created()" */
 
         <ul class="categorias">
 <!-- v-for para mostrar todas as categorias -->
-            <li v-for="categoria in categorias" :key="categoria.nome" >
-              {{ categoria.nome }}
+            <li v-for="categoria in categorias" :key="categoria.nome">
+            <CardCategoria :categoria="categoria"/>
             </li>
         </ul>
 
