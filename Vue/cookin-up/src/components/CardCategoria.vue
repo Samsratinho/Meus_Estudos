@@ -1,7 +1,7 @@
 <script lang="ts">
 import type ICategoria from '@/insterfaces/ICategoria';
 import type { PropType } from 'vue';
-import Tag from './Tag.vue';
+import IngredienteSelecionavel from './IngredienteSelecionavel.vue';
 
 export default{
   /* Utilizamos a opção props de um componente para receber informações do componente pai */
@@ -10,7 +10,7 @@ export default{
       /* É possível deixar seu tipo mais rígido com o tipo utilitário PropType */
         categoria: {type: Object as PropType<ICategoria>, required:true}
     },
-    components: { Tag }
+    components: { IngredienteSelecionavel }
 }
 </script>
 
@@ -27,7 +27,7 @@ export default{
 
     <ul class="categoria__ingredientes">
         <li v-for="ingrediente in categoria.ingredientes" :key="ingrediente">
-            <Tag :texto="ingrediente"/>
+        <IngredienteSelecionavel :ingrediente="ingrediente"/>
         </li>
     </ul>
  </article>
