@@ -10,7 +10,8 @@ export default{
       /* É possível deixar seu tipo mais rígido com o tipo utilitário PropType */
         categoria: {type: Object as PropType<ICategoria>, required:true}
     },
-    components: { IngredienteSelecionavel }
+    components: { IngredienteSelecionavel },
+    emits:['adicionarIngrediente', 'removerIngrediente']
 }
 </script>
 
@@ -27,7 +28,13 @@ export default{
 
     <ul class="categoria__ingredientes">
         <li v-for="ingrediente in categoria.ingredientes" :key="ingrediente">
-        <IngredienteSelecionavel :ingrediente="ingrediente"/>
+          <!--  possível escutar o evento diretamente no componente pai, escrevendo v-on:nome-do-evento (ou @nome-do-evento) no consumo do componente filho; -->
+        <IngredienteSelecionavel 
+          :ingrediente="ingrediente"
+          @adicionarIngrediente="$emit('adicionarIngrediente', $event)"
+          @remover-ingrediente="$emit('removerIngrediente', $event)"
+          />
+          
         </li>
     </ul>
  </article>
