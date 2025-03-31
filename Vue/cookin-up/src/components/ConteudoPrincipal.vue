@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import SelecionarIngredientes from './SelecionarIngredientes.vue';
 import SuaLista from './SuaLista.vue';
+import Rodape from './Rodape.vue';
 
 const ingredientes = ref<string[]>([]);
 
@@ -47,6 +48,7 @@ export default {
         @remover-ingrediente="removerIngrediente"
         />
     </main>
+    <Rodape />
 </template>
 
 <style scoped>
