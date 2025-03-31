@@ -1,7 +1,7 @@
 <script lang="ts">
 import type ICategoria from '@/insterfaces/ICategoria';
 import type { PropType } from 'vue';
-import Tag from './Tag.vue';
+import IngredienteSelecionavel from './IngredienteSelecionavel.vue';
 
 export default{
   /* Utilizamos a opção props de um componente para receber informações do componente pai */
@@ -10,7 +10,8 @@ export default{
       /* É possível deixar seu tipo mais rígido com o tipo utilitário PropType */
         categoria: {type: Object as PropType<ICategoria>, required:true}
     },
-    components: { Tag }
+    components: { IngredienteSelecionavel },
+    emits:['adicionarIngrediente', 'removerIngrediente']
 }
 </script>
 
@@ -27,7 +28,13 @@ export default{
 
     <ul class="categoria__ingredientes">
         <li v-for="ingrediente in categoria.ingredientes" :key="ingrediente">
-            <Tag :texto="ingrediente"/>
+          <!--  possível escutar o evento diretamente no componente pai, escrevendo v-on:nome-do-evento (ou @nome-do-evento) no consumo do componente filho; -->
+        <IngredienteSelecionavel 
+          :ingrediente="ingrediente"
+          @adicionarIngrediente="$emit('adicionarIngrediente', $event)"
+          @remover-ingrediente="$emit('removerIngrediente', $event)"
+          />
+          
         </li>
     </ul>
  </article>

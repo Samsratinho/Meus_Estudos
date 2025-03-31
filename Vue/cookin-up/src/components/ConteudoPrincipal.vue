@@ -1,25 +1,51 @@
-<script lang="ts">
+<script setup lang="ts">
+import { ref } from 'vue';
 import SelecionarIngredientes from './SelecionarIngredientes.vue';
 import SuaLista from './SuaLista.vue';
 
-/* só importa dentro do export default com o component: { } */
+const ingredientes = ref<string[]>([]);
+
+function adicionarIngrediente(ingrediente: string) {
+  ingredientes.value.push(ingrediente)
+}
+function removerIngrediente(ingrediente: string) {
+  ingredientes.value = ingredientes.value.filter(iLista => ingrediente !== iLista);
+}
+</script>
+
+<!-- <script lang="ts">
+import SelecionarIngredientes from './SelecionarIngredientes.vue';
+import SuaLista from './SuaLista.vue';
+
+
 export default {
     data() {
         return{
-            ingredientes: ['Alho', 'Manteiga' , 'Orégano']
-        }
+            ingredientes: [] as string [] ,
+        };
     },
-/* para pode importar o selecionar ingredientes  */
-    components: { SelecionarIngredientes, SuaLista }
+
+    components: { SelecionarIngredientes, SuaLista },
+    methods: {
+      adicionarIngrediente(ingrediente: string){
+        this.ingredientes.push(ingrediente)
+      },
+      removerIngrediente(ingrediente: string) {
+            this.ingredientes = this.ingredientes.filter(ing => ing !==ingrediente);
+        }
+    }
 }
-</script>
+</script> -->
 
 <template>
     <main class="conteudo-principal">
 <!-- conteudo principal é pai de SuaLista (infredientes para passar o conteudo dos arrays) -->
        <SuaLista :ingredientes="ingredientes"/>
 <!-- conteudo principal é pai do selecionar ingredientes -->
-        <SelecionarIngredientes />
+        <SelecionarIngredientes 
+        @adicionar-ingrediente="adicionarIngrediente"
+        @remover-ingrediente="removerIngrediente"
+        />
     </main>
 </template>
 

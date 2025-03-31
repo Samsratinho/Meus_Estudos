@@ -17,7 +17,8 @@ carrega o "caregorias:[]" depois o "created()" */
         async created() {
             this.categorias = await obterCategorias();
         },
-        components: { CardCategoria }
+        components: { CardCategoria },
+        emits: ['adicionarIngrediente', 'removerIngrediente']
     }
 </script>
 
@@ -33,7 +34,12 @@ carrega o "caregorias:[]" depois o "created()" */
         <ul class="categorias">
 <!-- v-for para mostrar todas as categorias -->
             <li v-for="categoria in categorias" :key="categoria.nome">
-            <CardCategoria :categoria="categoria"/>
+              <!--  possível escutar o evento diretamente no componente pai, escrevendo v-on:nome-do-evento (ou @nome-do-evento) no consumo do componente filho; -->
+            <CardCategoria 
+            :categoria="categoria"
+            @adicionar-ingrediente="$emit('adicionarIngrediente', $event)"
+            @remover-ingrediente="$emit('removerIngrediente', $event)"
+            />
             </li>
         </ul>
 
