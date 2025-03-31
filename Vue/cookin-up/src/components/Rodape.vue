@@ -1,6 +1,6 @@
 <template>
   <footer class="rodape paragrafo">
-    Desenvolvido por Alura | 2023 - Projeto fictício sem fins comerciais.
+    Desenvolvido por Samuel silva | 2025 - Projeto BOLADO DO MANO SAMS
   </footer>
 </template>
 

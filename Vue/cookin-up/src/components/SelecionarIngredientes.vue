@@ -2,11 +2,12 @@
  <script lang="ts"> 
 /* import de requisições http */
 import { obterCategorias } from '@/http/index';
-import type ICategoria from '@/insterfaces/ICategoria';
+import type ICategoria from '@/interfaces/ICategoria';
 import CardCategoria from './CardCategoria.vue';
 import BotaoPrincipal from './BotaoPrincipal.vue';
 
     export default {
+      name: 'SelecionarIngredientes',
         data(){
             return {
 /* tipagem para o typescrip não dar trabalho */
@@ -19,7 +20,7 @@ carrega o "caregorias:[]" depois o "created()" */
             this.categorias = await obterCategorias();
         },
         components: { CardCategoria, BotaoPrincipal },
-        emits: ['adicionarIngrediente', 'removerIngrediente']
+        emits: ['adicionarIngrediente', 'removerIngrediente', 'BuscarReceitas']
     }
 </script>
 
@@ -48,7 +49,7 @@ carrega o "caregorias:[]" depois o "created()" */
             *Atenção: consideramos que você tem em casa sal, pimenta e água
         </p>
 
-        <BotaoPrincipal texto="Buscar receitas!" />
+        <BotaoPrincipal texto="Buscar receitas!" @click="$emit('BuscarReceitas')"/>
     </section>
 </template>
 
