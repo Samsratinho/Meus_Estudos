@@ -1,36 +1,32 @@
 <script lang="ts">
+import type { PropType } from 'vue';
 import Tag from './Tag.vue';
 
 export default {
-    /* Utilizamos a opção props de um componente para receber informações do componente pai */
-    props: {
-        /* para importar os igredientes do ConteudoPincripal e declarar eles como array e string pro ts não reclamar */
-        ingredientes: { type: Array as () => string[], required: true }
-    },
-    /* tag importado para estilizar */
-    components: { Tag }
+  components: { Tag },
+  props: {
+    ingredientes: { type: Array as PropType<string[]>, required: true }
+  },
 }
 </script>
 
 <template>
-    <section>
-        <span class="subtitulo-lg sua-lista-texto">
-            Sua Lista:
-        </span>
-        <!-- v-if é para aparecer apenas se tiver variaveis dentro do aray ingredientes -->
-        <ul v-if="ingredientes.length" class="ingredientes-sua-lista">
-            <!-- o v-for é para usar um for no vue, ele coloca todas as variaveis do aray ai dentro -->
-            <li v-for="ingrediente in ingredientes" :key="ingrediente">
-                <!-- prop booleana que ativa a caracteristica do tag vue -->
-                <Tag :texto="ingrediente" :ativa="true" />
-            </li>
-        </ul>
-        <!-- v-else para mostrar caso não tenha variaveis dentro do aray -->
-        <p v-else class="paragrafo lista-vazia">
-            <img src="../assets/images/icones/lista-vazia.svg" alt="icone de pesquisa">
-            Sua lista está vazia, selecione ingredientes para iniciar.
-        </p>
-    </section>
+  <section>
+    <span class="subtitulo-lg sua-lista-texto">
+      Sua lista:
+    </span>
+
+    <ul v-if="ingredientes.length" class="ingredientes-sua-lista">
+      <li v-for="ingrediente in ingredientes" :key="ingrediente">
+        <Tag :texto="ingrediente" ativa />
+      </li>
+    </ul>
+
+    <p v-else class="paragrafo lista-vazia">
+      <img src="../assets/imagens/icones/lista-vazia.svg" alt="Ícone de pesquisa">
+      Sua lista está vazia, selecione ingredientes para iniciar.
+    </p>
+  </section>
 </template>
 
 <style scoped>

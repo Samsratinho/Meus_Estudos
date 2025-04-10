@@ -1,55 +1,48 @@
-<!-- lang ts para poder estar rodando o typescript -->
- <script lang="ts"> 
-/* import de requisições http */
+<script lang="ts">
 import { obterCategorias } from '@/http/index';
-import type ICategoria from '@/insterfaces/ICategoria';
+import type ICategoria from '@/interfaces/ICategoria';
 import CardCategoria from './CardCategoria.vue';
 import BotaoPrincipal from './BotaoPrincipal.vue';
 
-    export default {
-        data(){
-            return {
-/* tipagem para o typescrip não dar trabalho */
-                categorias: [] as ICategoria[]
-            }
-        },
-/* para obter a requisição http com async, primeiro 
-carrega o "caregorias:[]" depois o "created()" */
-        async created() {
-            this.categorias = await obterCategorias();
-        },
-        components: { CardCategoria, BotaoPrincipal },
-        emits: ['adicionarIngrediente', 'removerIngrediente']
-    }
+export default {
+  name: 'SelecionarIngredientes',
+  data() {
+    return {
+      categorias: [] as ICategoria[]
+    };
+  },
+  async created() {
+    this.categorias = await obterCategorias();
+  },
+  components: { CardCategoria, BotaoPrincipal },
+  emits: ['adicionarIngrediente', 'removerIngrediente', 'buscarReceitas']
+}
 </script>
 
 <template>
-    <section class="selecionar-ingredientes">
-        <h1 class="cabecalho titulo-ingredientes">
-            Ingredientes
-        </h1>
-        <p class="paragrafo-lg instrucoes">
-            Selecione abaixo os ingredientes que você quer usar nesta receita:
-        </p>
+  <section class="selecionar-ingredientes">
+    <h1 class="cabecalho titulo-ingredientes">Ingredientes</h1>
 
-        <ul class="categorias">
-<!-- v-for para mostrar todas as categorias -->
-            <li v-for="categoria in categorias" :key="categoria.nome">
-              <!--  possível escutar o evento diretamente no componente pai, escrevendo v-on:nome-do-evento (ou @nome-do-evento) no consumo do componente filho; -->
-            <CardCategoria 
-            :categoria="categoria"
-            @adicionar-ingrediente="$emit('adicionarIngrediente', $event)"
-            @remover-ingrediente="$emit('removerIngrediente', $event)"
-            />
-            </li>
-        </ul>
+    <p class="paragrafo-lg instrucoes">
+      Selecione abaixo os ingredientes que você quer usar nesta receita:
+    </p>
 
-        <p class="paragrafo dica">
-            *Atenção: consideramos que você tem em casa sal, pimenta e água
-        </p>
+    <ul class="categorias">
+      <li v-for="categoria in categorias" :key="categoria.nome">
+        <CardCategoria
+          :categoria="categoria"
+          @adicionar-ingrediente="$emit('adicionarIngrediente', $event)"
+          @remover-ingrediente="$emit('removerIngrediente', $event)"
+        />
+      </li>
+    </ul>
 
-        <BotaoPrincipal texto="Buscar receitas!" />
-    </section>
+    <p class="paragrafo dica">
+      *Atenção: consideramos que você tem em casa sal, pimenta e água.
+    </p>
+
+    <BotaoPrincipal texto="Buscar receitas!" @click="$emit('buscarReceitas')" />
+  </section>
 </template>
 
 <style scoped>
@@ -87,5 +80,4 @@ carrega o "caregorias:[]" depois o "created()" */
     margin-bottom: 2.5rem;
   }
 }
-
 </style>
